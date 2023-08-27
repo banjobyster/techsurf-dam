@@ -169,17 +169,24 @@ export const uploadFile = async (req, res) => {
         });
         await clientS3.send(command2);
 
-        const url = `${azure_endpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags`;
-        const headers = {
-          "Content-Type": "application/octet-stream",
-          "Ocp-Apim-Subscription-Key": azure_apikey,
-        };
-        const bodyData = optimizedImageBuffer;
-        const response = await axios.post(url, bodyData, { headers });
-        const tagsResult = response.data.tagsResult.values;
-        const filteredTags = tagsResult.filter((tag) => tag.confidence >= 0.8);
-        const tags = filteredTags.map((tag) => tag.name);
-        
+        let tags = [];
+        try {
+          const url = `${azure_endpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags`;
+          const headers = {
+            "Content-Type": "application/octet-stream",
+            "Ocp-Apim-Subscription-Key": azure_apikey,
+          };
+          const bodyData = optimizedImageBuffer;
+          const response = await axios.post(url, bodyData, { headers });
+          const tagsResult = response.data.tagsResult.values;
+          const filteredTags = tagsResult.filter(
+            (tag) => tag.confidence >= 0.8
+          );
+          tags = filteredTags.map((tag) => tag.name);
+        } catch (err) {
+          console.log(err);
+        }
+
         const file = {
           reference: fileName,
           optimizedReference: `optimizedReference_${fileName}`,

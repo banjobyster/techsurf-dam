@@ -22,7 +22,6 @@ const Workspace = () => {
     if (selectedFile) {
       const formData = new FormData();
       formData.append("file", selectedFile);
-      setSelectedFile(null);
 
       try {
         const response = await fetch(
@@ -82,7 +81,7 @@ const Workspace = () => {
           </Button>
         </label>
         <FileList />
-        {selectedFile && (
+        {selectedFile && !loading && (
           <Modal open={true} onClose={() => setSelectedFile(null)}>
             <Paper
               sx={{
