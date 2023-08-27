@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Express.js
+dist/
+.build/
+.env
+
+# React
+build/
+node_modules/
+yarn-error.log
+.env
+
+# MongoDB
+/data/db
+
+# Logs and runtime data
+*.log
+*.pid
+*.seed
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Dependency directories
+/.yarn
