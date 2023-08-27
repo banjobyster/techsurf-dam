@@ -12,21 +12,11 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress, Paper } from "@mui/material";
 
 const SignUp = () => {
   const [emailSent, setEmailSent] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // const validateEmail = (email) => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!emailRegex.test(email)) {
-  //     setEmailError(true);
-  //     return false;
-  //   }
-  //   setEmailError(false);
-  //   return true;
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -67,14 +57,21 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <div class="circle xxlarge shade1"></div>
+      <div class="circle xlarge shade2"></div>
+      <div class="circle large shade3"></div>
+      <div class="circle medium shade4"></div>
+      <div class="circle small shade5"></div>
       <CssBaseline />
-      <Box
+      <Paper
         sx={{
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          padding: "20px"
         }}
+        elevation={10}
       >
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
@@ -163,7 +160,7 @@ const SignUp = () => {
             </Grid>
           </Grid>
         </Box>
-      </Box>
+      </Paper>
       {loading && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

@@ -51,12 +51,11 @@ const HomePage = () => {
           p: 3,
           pt: 0,
           width: { xs: "100%", sm: `calc(100% - 240px)` },
-          height: "90vh"
+          height: "90vh",
         }}
       >
         <Toolbar />
         <Workspace />
-        {/* <SpeedDialTooltipOpen /> */}
       </Box>
     </Box>
   );

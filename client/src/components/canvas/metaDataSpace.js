@@ -50,7 +50,7 @@ const MetaDataSpace = ({
   };
 
   useEffect(() => {
-    if(isOptimized == false) {
+    if (isOptimized == false) {
       setApplyEffects(false);
     }
   }, [isOptimized]);
@@ -118,7 +118,7 @@ const MetaDataSpace = ({
       downloadLink.download = `${editedFile.name}.${selectedFormat}`;
       downloadLink.click();
     } else {
-      console.log(editedFile)
+      console.log(editedFile);
       const originalImageURL = `${editedFile.reference}`;
       const response = await fetch(originalImageURL);
       const blob = await response.blob();
@@ -215,12 +215,14 @@ const MetaDataSpace = ({
       </Box>
       <Box display="flex" flexDirection="column" alignItems="flex-end">
         <Box>
-          <IconButton
-            onClick={saveData}
+          <Button
+            variant="outlined"
+            startIcon={<SaveIcon />}
             color={isEdited ? "primary" : "secondary"}
+            onClick={saveData}
           >
-            <SaveIcon fontSize="large" />
-          </IconButton>
+            {isEdited ? "Saved" : "Unsaved*"}
+          </Button>
           <IconButton onClick={downloadFilteredImage}>
             <DownloadIcon fontSize="large" />
           </IconButton>
@@ -260,7 +262,11 @@ const MetaDataSpace = ({
         </Box>
         <Box>
           <FormControlLabel
-            label={applyEffects ? "Download with effects" : "Download without effects"}
+            label={
+              applyEffects
+                ? "Download with effects"
+                : "Download without effects"
+            }
             control={
               <Switch
                 checked={applyEffects}

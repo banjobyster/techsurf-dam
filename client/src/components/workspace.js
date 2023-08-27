@@ -59,6 +59,7 @@ const Workspace = () => {
         backgroundColor: "#f7f9fc",
         borderRadius: "10px",
         p: "10px",
+        mt: "10px"
       }}
     >
       <Box

@@ -6,11 +6,9 @@ package-lock.json
 
 # Express.js
 dist/
-.build/
 .env
 
 # React
-build/
 node_modules/
 yarn-error.log
 .env

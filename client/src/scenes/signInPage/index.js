@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress, Paper } from "@mui/material";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -64,14 +64,21 @@ const SignIn = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <div class="circle xxlarge shade1"></div>
+      <div class="circle xlarge shade2"></div>
+      <div class="circle large shade3"></div>
+      <div class="circle medium shade4"></div>
+      <div class="circle small shade5"></div>
       <CssBaseline />
-      <Box
+      <Paper
         sx={{
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          padding: "20px",
         }}
+        elevation={10}
       >
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
@@ -130,7 +137,8 @@ const SignIn = () => {
             </Grid>
           </Grid>
         </Box>
-      </Box>{loading && (
+      </Paper>
+      {loading && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loading}
